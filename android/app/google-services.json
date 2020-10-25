@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "582267081238",
+    "firebase_url": "https://agroq-d66b7.firebaseio.com",
+    "project_id": "agroq-d66b7",
+    "storage_bucket": "agroq-d66b7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582267081238:android:9ca1126d457170aa8d1b37",
+        "android_client_info": {
+          "package_name": "com.agroq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582267081238-l6gd7lqp33abctkaa4dga7hc099r6la3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrjaOlH2hRDumPK2zbgIdQSJuKwpaFP6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582267081238-l6gd7lqp33abctkaa4dga7hc099r6la3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

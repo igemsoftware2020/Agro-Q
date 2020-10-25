@@ -1,0 +1,44 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+
+platform :ios, '10.0'
+rn_maps_path = '../node_modules/react-native-maps'
+pod 'react-native-google-maps', :path => rn_maps_path
+pod 'GoogleMaps'
+pod 'Google-Maps-iOS-Utils'
+
+target 'agroQ' do
+  config = use_native_modules!
+ 
+
+  use_react_native!(:path => config["reactNativePath"])
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+
+  pod 'RNTableView', :path => '../node_modules/react-native-tableview'
+
+  target 'agroQTests' do
+    inherit! :complete
+    # Pods for testing
+  end
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  use_flipper!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
+end
+
+target 'agroQ-tvOS' do
+  # Pods for agroQ-tvOS
+
+  target 'agroQ-tvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+end
