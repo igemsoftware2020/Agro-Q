@@ -19,7 +19,10 @@ import LoginScreen from './screens/loginScreen';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import HomeScreen from './screens/HomeScreen';
 import Onboarding from 'react-native-onboarding-swiper';
-
+import linearRegression from './screens/linearRegression';
+import BoxPlot from './screens/BoxPlot';
+import logisticRegression from './screens/logisticRegression';
+import SER from './screens/sErrorBars';
 
 
 
@@ -45,7 +48,13 @@ const App = () => {
        <Drawer.Screen name="Home" component={MainTabScreen} />
        <Drawer.Screen name="ProfileScreen" component={onboarding} />
        <Drawer.Screen name="Login" component={login} />
+       <Drawer.Screen name="linearRegression" component={linearRegression} />
+       <Drawer.Screen name="BoxPlot" component={BoxPlot} />
+       <Drawer.Screen name="logisticRegression" component={logisticRegression} />
+       <Drawer.Screen name="SymmetricErrorBars" component={SER} />
+       
      </Drawer.Navigator>
+
    
      
    </NavigationContainer>

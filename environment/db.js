@@ -20,11 +20,10 @@ exports.iotData = iotData;
 class DBInteraction {
     getCurrentData(systemName) {
         return __awaiter(this, void 0, void 0, function* () {
-            var docRef = firebase_config_1.database().ref('hydroSystem/'+systemName);
-            // Attach an asynchronous callback to read the data at our posts reference
-            var val = yield docRef.get();
-            console.log(val.data());
-            return val.data();
+            var docRef = firebase_config_1.database().ref('hydroSystem/'+systemName).on('value',snapshp=>{
+                console.log(snapshp.val());
+                return snapshp.val();
+            });
         });
     }
     getHistoricalData(systemName) {
