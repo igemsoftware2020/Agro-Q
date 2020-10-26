@@ -26,11 +26,13 @@ const DetailsScreen = ({navigation}) => {
           onPress={() => navigation.navigate('logisticRegression')}
           title='Logistic Regression'/>
           <SettingsList.Item
-           
-          title='Linear Regression '/>
-          <SettingsList.Item title='Logistic Regression'/>
-          <SettingsList.Item title='Linear Regression '/>
-          <SettingsList.Item title='Logistic Regression'/>
+          onPress={() => navigation.navigate('2dHCP')}
+          title='2d Countour Plot '/>
+          <SettingsList.Item 
+          onPress={() => navigation.navigate("cdp")}
+          title='Catagorical Dot Plot'/>
+          <SettingsList.Item onPress={() => navigation.navigate("spc")} title='SPC Control Chart'/>
+          <SettingsList.Item onPress={() => navigation.navigate("pointCloud")} title='Point Cloud'/>
      
         </SettingsList>
 

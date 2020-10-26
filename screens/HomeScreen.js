@@ -110,7 +110,7 @@ const HomeScreen = ({navigation}) => {
           </View>
         <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Temp: {system.temp}</Text>
         
-              <Text paragraph color="gray">Temp on track</Text>
+              <Text paragraph color="gray">Celcius</Text>
             </Card>
         
         
@@ -120,7 +120,7 @@ const HomeScreen = ({navigation}) => {
             <Ionicons name="checkmark" size={35} color="#013220" />
           </View>
               <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Humidity: 40</Text>
-              <Text paragraph color="gray">Humidity on track</Text>
+              <Text paragraph color="gray">Percent</Text>
             </Card>
           </Block>
 
@@ -137,7 +137,8 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.categoryIcon3}>
             <Ionicons name="alert-outline" size={35} color="#013220" />
           </View>
-              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>O2: 30</Text>
+              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Light: 10</Text>
+              <Text paragraph color="gray">Lumens</Text>
               
             </Card>
         
@@ -147,7 +148,8 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.categoryIcon2}>
             <Ionicons name="checkmark" size={35} color="#013220" />
           </View>
-              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Water Temp: 30</Text>
+              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Water: 24</Text>
+              <Text paragraph color="gray">Celcius</Text>
             
             </Card>
           </Block>
@@ -167,7 +169,7 @@ const HomeScreen = ({navigation}) => {
             <Ionicons name="checkmark" size={35} color="#013220" />
           </View>
               <Text  h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Co2: 700</Text>
-              <Text paragraph color="gray">Co2 on track</Text>
+              <Text paragraph color="gray">PPMs</Text>
             </Card>
         
         
@@ -177,7 +179,7 @@ const HomeScreen = ({navigation}) => {
             <Ionicons name="alert-outline" size={35} color="#013220" />
           </View>
               <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>PH: 4</Text>
-              <Text paragraph color="gray">PH on Track</Text>
+              <Text paragraph color="gray">logarithm of H+</Text>
             </Card>
           </Block>
 

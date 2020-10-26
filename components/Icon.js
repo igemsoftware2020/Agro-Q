@@ -47,7 +47,7 @@ const waterTempIcon = (
 
 const o2Icon = (
     <Image
-      source={require('../assets/o2.png')}
+      source={require('../assets/light.png')}
       style={{ height: 50, width: 50 }}
     />
   );
@@ -58,6 +58,7 @@ const tempIcon = (
       style={{ height: 50, width: 50 }}
     />
   );
+  
   
 
 export default class Icon extends PureComponent {

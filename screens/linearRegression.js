@@ -3,32 +3,28 @@ import { View, Text, Button, StyleSheet, StatusBar } from 'react-native';
 import Plotly from 'react-native-plotly';
 
 
-const upTrace = {
+const trace1 = {
     __id: 'up',
     x: [1, 2, 3, 4],
-  y: [12, 9, 15, 12],
-  mode: 'lines+markers',
-  type: 'scatter'
+    y: [10, 15, 13, 17],
+    mode: 'markers',
+    name: 'Sensor-health'
+  
   };
   
-  const downTrace = {
+  const trace2 = {
     __id: 'down',
-    x: [1, 2, 3, 4, 5],
-    y: [8, 4, 3, 2, 1],
-    type: 'scatter',
+    x: [1, 2, 3, 4],
+  y: [9, 13,17 ,21],
+  mode: 'lines',
+  name: 'Predicted'
   };
 
 const linearRegression = ({navigation}) => {
-  const [trace, setTrace] = useState(upTrace);
+  
   const [resetKey, setResetKey] = useState(0);
   const [loading, setLoading] = useState(true);
-  function swapData() {
-    if (trace.__id === 'up') {
-      setTrace(downTrace);
-    } else {
-      setTrace(upTrace);
-    }
-  }
+  
 
   const update = (_, { data, layout, config }, plotly) => {
     plotly.react(data, layout, config);
@@ -40,16 +36,14 @@ const linearRegression = ({navigation}) => {
   }
     return (
 <View style={styles.container}>
-      <View style={styles.buttonRow}>
-        <Button onPress={swapData} title="Switch Data" />
-      </View>
+      
       <View style={styles.loadingRow}>
         <Text>{loading ? 'Loading' : 'Finished Loading'}</Text>
       </View>
       <View style={styles.chartRow}>
         <Plotly
-          data={[trace]}
-          layout={{ title: "Linear Regression"}}
+          data={[trace1, trace2]}
+          layout={{ title: "Health vs Sensor Values"}}
           update={update}
           onLoad={() => setLoading(false)}
           debug

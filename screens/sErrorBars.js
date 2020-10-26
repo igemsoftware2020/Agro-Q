@@ -57,7 +57,7 @@ const SER = ({navigation}) => {
       <View style={styles.chartRow}>
         <Plotly
           data={[trace]}
-          layout={{ title: "Linear Regression"}}
+          layout={{ title: "Plant Health - error bar chart"}}
           update={update}
           onLoad={() => setLoading(false)}
           debug

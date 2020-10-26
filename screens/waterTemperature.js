@@ -35,7 +35,7 @@ class waterTempScreen extends Component {
     }
 
   render () {
-    const data = [3,2,2,1,3,3,3,2,3,2,2]
+    const data = [18,18,19,18,20,22,23,24]
  
         const contentInset = { top: 20, bottom: 20 }
  return (
@@ -69,37 +69,37 @@ class waterTempScreen extends Component {
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>3:00pm 10/25/2020</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>24</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>2:00pm 10/25/2020</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>24</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>1:00pm 10/25/2020</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>23</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>12:00pm 10/25/2020</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>23</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>11:00am 10/25/2020</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>23</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>10:00am 10/25/2020</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>22</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -111,6 +111,7 @@ class waterTempScreen extends Component {
       label="1-2 of 6"
     />
   </DataTable>
+            
             
           </Block>
         </Card>
@@ -134,7 +135,7 @@ class waterTempScreen extends Component {
                <Block row right>
                  <Block flex={2} row center right>
                    <Label purple />
-                   <Text paragraph color="gray">Humidity</Text>
+                   <Text paragraph color="gray">Water Temp</Text>
                  </Block>
                </Block>
                <Block>

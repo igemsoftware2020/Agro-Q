@@ -14,7 +14,7 @@ export const markers = [
         latitude: 22.6293867,
         longitude: 88.4354486,
         },
-        title: "Test1",
+        title: "Location 1",
         description: "this is a random description that goes here",
         image: Images[0].image,
 
@@ -25,7 +25,7 @@ export const markers = [
             latitude: 22.6345648,
             longitude: 88.4377279,
         },
-        title: "Test2",
+        title: "Location 2",
         description: "this is a random description that goes here",
         image: Images[1].image,
 
@@ -36,7 +36,7 @@ export const markers = [
             latitude: 22.6281662,
         longitude: 88.4410113,
         },
-        title: "Test3",
+        title: "Location 3",
         description: "this is a random description that goes here",
         image: Images[2].image,
 
@@ -47,7 +47,7 @@ export const markers = [
             latitude: 22.6292757,
         longitude: 88.444781,
         },
-        title: "Test4",
+        title: "Location 4",
         description: "this is a random description that goes here",
         image: Images[3].image,
 

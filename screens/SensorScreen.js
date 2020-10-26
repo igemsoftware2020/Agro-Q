@@ -147,15 +147,15 @@ const SensorScreen = ({navigation}) => {
           <Card middle style={{ marginLeft: 7 }}>
             <Icon temp/>
             <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Outside Temp</Text>
-            <Text paragraph color="gray">In Farenheit  </Text>
+            <Text paragraph color="gray">In Celcius</Text>
           </Card>
           </TouchableOpacity>
           <TouchableOpacity
           onPress={() => navigation.navigate('O2 Stats')}>
           <Card middle style={{ marginLeft: 7 }}>
             <Icon o2 />
-            <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>o2</Text>
-            <Text paragraph color="gray">Dissolved Oxygen</Text>
+            <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Light Intensity</Text>
+            <Text paragraph color="gray">Lumens    </Text>
           </Card>
           </TouchableOpacity>
     

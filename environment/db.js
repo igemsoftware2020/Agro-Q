@@ -1,35 +1,46 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DBInteraction = exports.iotData = void 0;
-const firebase_config_1 = __importDefault(require("./config"));
-class iotData {
-}
-exports.iotData = iotData;
+import  firebase from 'firebase'; 
+import  "firebase/firestore";
+
+ // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig= {
+    apiKey: "AIzaSyC8QpdR3EXSLip4o03td9G4BqX8KpRXz6Y",
+    authDomain: "agroq-d66b7.firebaseapp.com",
+    databaseURL: "https://agroq-d66b7.firebaseio.com",
+    projectId: "agroq-d66b7",
+    storageBucket: "agroq-d66b7.appspot.com",
+    messagingSenderId: "582267081238",
+    appId: "1:582267081238:web:52d0e2abc5c73ebe8d1b37",
+    measurementId: "G-D0ZH6Z9PSF"
+  };
+  // var serviceAccount = require("./firebase_key.json");
+
+ 
+  // Initialize Firebase
+
+
+var fb = firebase.initializeApp(firebaseConfig);
+
 class DBInteraction {
-    getCurrentData(systemName) {
-        return __awaiter(this, void 0, void 0, function* () {
-            var docRef = firebase_config_1.database().ref('hydroSystem/'+systemName).on('value',snapshp=>{
-                console.log(snapshp.val());
-                return snapshp.val();
-            });
-        });
+   async getCurrentData(systemName) {
+       
+        //   fb.firestore.setLogLevel('debug');
+
+            var coll =fb.firestore().collection('hydroSystem');
+            var ref = coll.doc('lambert');
+            var data= await  ref.get();
+            var finalData = data.data();
+            return finalData;
+            // var docRef = firebase_config_1.default.collection('historySystem').doc(systemName);
+            // var docData = docRef.get();
+            // return  docData.data();
+       
     }
     getHistoricalData(systemName) {
         return __awaiter(this, void 0, void 0, function* () {
             // var docRef:firebasedb.Reference = db.ref("hydroSystem/lambert");
-            var docRef = firebase_config_1.default.collection('historySystem').doc(systemName);
+            var docRef = fb.collection('historySystem').doc(systemName);
             // Attach an asynchronous callback to read the data at our posts reference
             var lst = yield docRef.listCollections();
             let arData = [];

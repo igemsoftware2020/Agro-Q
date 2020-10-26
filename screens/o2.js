@@ -64,7 +64,7 @@ class O2Screen extends Component {
           <DataTable>
     <DataTable.Header>
       <DataTable.Title numeric>Reading Date/Time</DataTable.Title>
-      <DataTable.Title numeric>Humidity</DataTable.Title>
+      <DataTable.Title numeric>Light</DataTable.Title>
      
     </DataTable.Header>
 
@@ -128,13 +128,13 @@ class O2Screen extends Component {
            <ScrollView contentContainerStyle={{ paddingVertical: 25 }}>
              
              <Card
-               title="O2 over 3 days"
+               title="Light Intensity over 3 days"
                style={[styles.margin, { marginTop:"15%"}]}
              >
                <Block row right>
                  <Block flex={2} row center right>
                    <Label purple />
-                   <Text paragraph color="gray">Humidity</Text>
+                   <Text paragraph color="gray">Lumens</Text>
                  </Block>
                </Block>
                <Block>
