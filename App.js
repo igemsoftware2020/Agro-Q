@@ -6,7 +6,6 @@
  * @flow strict-local
  */
 import 'react-native-gesture-handler';
-import React, { useState, useEffect } from 'react';
 import { NavigationContainer, DarkTheme} from '@react-navigation/native';
 //import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -27,7 +26,12 @@ import hcp from './screens/hcp';
 import cdp from './screens/cdp';
 import spc from './screens/spc';
 import pointCloud from './screens/pointCoud';
-import rs from './screens/loginScreens/RegistrationScreen';
+import React, { useState, useEffect } from 'react';
+import auth from '@react-native-firebase/auth';
+import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import styles from './screens/loginScreens/styles';
+
+
 
 
 //<script src="http://localhost:8097"></script>
@@ -43,16 +47,37 @@ const Drawer = createDrawerNavigator()
 
 
 const App = () => {
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // logout on unmount
+  }, []);
+
+  if (initializing) return null;
+
+  if (!user) {
+    
+    return (
+      <LoginScreen />
+    );
+  }
 
 
- 
     return(
       <NavigationContainer >
       <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
        <Drawer.Screen name="Home" component={MainTabScreen} />
        <Drawer.Screen name="ProfileScreen" component={onboarding} />
        <Drawer.Screen name="Login" component={login} />
-       <Drawer.Screen name="Register" component={rs} />
+       {/*<Drawer.Screen name="Register" component={rs} />*/}
        <Drawer.Screen name="linearRegression" component={linearRegression} />
        <Drawer.Screen name="BoxPlot" component={BoxPlot} />
        <Drawer.Screen name="logisticRegression" component={logisticRegression} />

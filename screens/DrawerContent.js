@@ -1,5 +1,6 @@
 import React from 'react';
 import {View,  StyleSheet} from 'react-native';
+import auth from '@react-native-firebase/auth';
 
 
 import {
@@ -22,6 +23,12 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export function DrawerContent(props) {
+    const logoff = () => {
+        auth()
+  .signOut()
+  .then(() => console.log('User signed out!'));
+
+    };
    
     return(
         <View style={{flex:1}}>
@@ -141,7 +148,7 @@ export function DrawerContent(props) {
                         />
                     )}
                     label="Sign Out"
-                   // onPress={}
+                   onPress={() => logoff()}
                 />
 
             </Drawer.Section>
