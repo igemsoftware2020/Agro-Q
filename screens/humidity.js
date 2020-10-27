@@ -19,6 +19,7 @@ import * as theme from '../constants/theme';
 import SegmentedControlTab from "react-native-segmented-control-tab";
 
 class humidityScreen extends Component {
+  
 	
   constructor() {
  super();

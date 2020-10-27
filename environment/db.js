@@ -1,6 +1,6 @@
 "use strict";
-import  firebase from 'firebase'; 
-import  "firebase/firestore";
+import firebase from '@react-native-firebase/app';
+import firestore from '@react-native-firebase/firestore';
 
  // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -18,10 +18,11 @@ import  "firebase/firestore";
 
  
   // Initialize Firebase
-
-
-var fb = firebase.initializeApp(firebaseConfig);
-
+var fb = null;
+if (! firebase.apps.length)
+    fb = firebase.initializeApp(firebaseConfig);
+else
+  fb = firebase.app();
 class DBInteraction {
    async getCurrentData(systemName) {
        

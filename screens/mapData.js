@@ -8,8 +8,19 @@ const Images = [
   
 ];
 
+
+
+
+var firstData=null;
+
+
+  
+ 
 export const markers = [
+    
+
     {
+        
         coordinate: {
         latitude: 22.6293867,
         longitude: 88.4354486,

@@ -71,7 +71,7 @@ class TempScreen extends Component {
     <DataTable.Row>
       <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric></DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>

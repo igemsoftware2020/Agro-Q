@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image,Button, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Text, Image,Button, StyleSheet, StatusBar, TouchableOpacity, FlatList } from 'react-native';
 import Swiper from 'react-native-swiper';
-import firebase from 'firebase';
+import firebase from '@react-native-firebase/app';
 import { firebaseApp } from '../environment/config';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -20,30 +20,39 @@ import Icon from "../components/Icon";
 import Card from "../components/Card";
 
 
-
-
+var firstData=null;
 const HomeScreen = ({navigation}) => {
   console.log("starting");
-  const[system, setSystem]= useState({});
-
-  useEffect(() => {
+  const[hsystem, setHsystem]= useState({temp:100});
+  
+ useEffect(() => {
     console.log("useeffect");
+    
     const fetch= async()=>{
       console.log("fetch start");
       const xDB = new DBInteraction();
-    var data =await xDB.getCurrentData('lambert');
-    console.log(data);
-    setSystem(data);
-
+    var finalData =await xDB.getCurrentData('lambert');
+    console.log(finalData);
+     setHsystem(finalData);
+    // firstData = finalData
+   
     
     }
+     if ( firstData ==null)
+      fetch();
     
-    fetch();
-    
-  });
-
+  },
  
+  []);
+
+  console.log(hsystem.temp);
+  
+  
     return (
+
+      
+      
+       
       <ScrollView style= {styles.container}>
          <View style={styles.sliderContainer}>
         <Swiper autoplay horizontal= {false}height={200} activeDotColor="#90ee90">
@@ -107,8 +116,11 @@ const HomeScreen = ({navigation}) => {
             <Card middle style={{ marginRight: 7 }}>
             <View style={styles.categoryIcon2}>
             <Ionicons name="checkmark" size={35} color="#013220" />
+          
           </View>
-        <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Temp: {system.temp}</Text>
+          
+        <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Temp:{hsystem.Temp} </Text>
+       
         
               <Text paragraph color="gray">Celcius</Text>
             </Card>
@@ -119,7 +131,8 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.categoryIcon2}>
             <Ionicons name="checkmark" size={35} color="#013220" />
           </View>
-              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Humidity: 40</Text>
+        <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Humidity: {hsystem.humidity}</Text>
+        
               <Text paragraph color="gray">Percent</Text>
             </Card>
           </Block>
@@ -137,7 +150,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.categoryIcon3}>
             <Ionicons name="alert-outline" size={35} color="#013220" />
           </View>
-              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Light: 10</Text>
+              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Light: {hsystem.light}</Text>
               <Text paragraph color="gray">Lumens</Text>
               
             </Card>
@@ -148,7 +161,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.categoryIcon2}>
             <Ionicons name="checkmark" size={35} color="#013220" />
           </View>
-              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Water: 24</Text>
+        <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Water: {hsystem.waterTemp}</Text>
               <Text paragraph color="gray">Celcius</Text>
             
             </Card>
@@ -168,7 +181,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.categoryIcon2}>
             <Ionicons name="checkmark" size={35} color="#013220" />
           </View>
-              <Text  h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Co2: 700</Text>
+        <Text  h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Co2: {hsystem.co2}</Text>
               <Text paragraph color="gray">PPMs</Text>
             </Card>
         
@@ -178,7 +191,7 @@ const HomeScreen = ({navigation}) => {
             <View style={styles.categoryIcon3}>
             <Ionicons name="alert-outline" size={35} color="#013220" />
           </View>
-              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>PH: 4</Text>
+              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>PH: {hsystem.Ph}</Text>
               <Text paragraph color="gray">logarithm of H+</Text>
             </Card>
           </Block>

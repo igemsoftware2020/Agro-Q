@@ -26,7 +26,9 @@ const DetailsStack = createStackNavigator();
 const SensorStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
+
 const MainTabScreen = () => ( 
+  
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#fff"
