@@ -177,10 +177,10 @@ Login info for test account: (create user will be created in future version)
 
 
 ## Testing
-Download the code from this repository to run a node js server to update values on the app.
-<a href= "https://github.com/VarunSendilraj/testingagro-q/tree/main " ></a>
+Download the code from this repository to run a node js server to update values on the app:
+https://github.com/VarunSendilraj/testingagro-q/tree/main 
 
-### Mac - Android or iOS
+### Run
 1. Open Terminal and navigate to the project folder
 1. To run the server, enter the following command in the terminal: 
 ```
