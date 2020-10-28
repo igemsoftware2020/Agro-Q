@@ -177,7 +177,8 @@ Login info for test account: (create user will be created in future version)
 
 
 ## Testing
-Download the 'test' folder in the judging form
+Download the code from this repository to run a node js server to update values on the app.
+<a href= "https://github.com/VarunSendilraj/testingagro-q/tree/main " ></a>
 
 ### Mac - Android or iOS
 1. Open Terminal and navigate to the project folder
