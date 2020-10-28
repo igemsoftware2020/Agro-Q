@@ -68,14 +68,14 @@ Screens Descriptions:
   </a>
  <br>
 
-* Here is the description of the first screen
+
 <br>
 <a href="#">
     <img src=' https://2020.igem.org/wiki/images/a/a2/T--Lambert_GA--home.png' alt="Logo" width="10%" height="10%">
   </a>
   <br>
 
-* Here is the description of the first screen
+
 <br>
 <a href="#">
     <img src=' https://2020.igem.org/wiki/images/e/e0/T--Lambert_GA--Agro3.png' alt="Logo" width="10%" height="10%">
@@ -83,14 +83,14 @@ Screens Descriptions:
 
   <br>
 
-* Here is the description of the first screen
+
 <br>
  <a href="#">
     <img src='https://2020.igem.org/wiki/images/3/3e/T--Lambert_GA--Agro5.png' alt="Logo" width="10%" height="10%">
   </a>
   <br>
 
-* Here is the description of the first screen
+
 
 <br>
  <a href="#">
@@ -99,7 +99,7 @@ Screens Descriptions:
 
   <br>
 
-* Here is the description of the first screen
+
 
 <br>
 <a href="#">
@@ -108,7 +108,7 @@ Screens Descriptions:
 
   <br>
 
-* Here is the description of the first screen
+
 
 <br>
 <a href="#">
@@ -117,7 +117,6 @@ Screens Descriptions:
 
 <br>
 
-* Here is the description of the first screen
 
 
 
@@ -196,11 +195,6 @@ To update the data values type the values in the following link
 http://localhost:3000/sendData/temp,Ph,light,co2,waterTemp,humidity
 
 ```
-
-
-
-
-
 
 
 
