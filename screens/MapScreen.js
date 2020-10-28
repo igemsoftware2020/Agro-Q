@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -27,9 +27,8 @@ const CARD_HEIGHT = 220;
 const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
-
+var firstData=null;
 const MapScreen = () => {
-  
    const initialMapState = {
     markers,
     categories: [
@@ -57,8 +56,8 @@ const MapScreen = () => {
     region: {
       latitude: 34.105793,
       longitude:-84.137916,
-      latitudeDelta: 0.04864195044303443,
-      longitudeDelta: 0.040142817690068,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
     },
   };
 
@@ -68,7 +67,7 @@ const MapScreen = () => {
   let mapAnimation = new Animated.Value(0);
   useEffect(() => {
     mapAnimation.addListener(({ value }) => {
-      let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
+      let index = Math.floor(value / CARD_WIDTH + 0.3); 
       if (index >= state.markers.length) {
         index = state.markers.length - 1;
       }

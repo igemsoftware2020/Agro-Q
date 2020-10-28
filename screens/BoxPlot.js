@@ -6,8 +6,8 @@ import Plotly from 'react-native-plotly';
 
 const trace1 = {
     __id: 'up',
-    x: ['Trial 1', 'Trial 2', 'Trial 3'],
-  y: [3, 6, 4],
+    x: ['ph', 'temp', 'humidity'],
+  y: [global.ph, global.temp, global.humidity],
   name: 'Control',
   error_y: {
     type: 'data',
@@ -19,12 +19,12 @@ const trace1 = {
   
   const trace2 = {
     __id: 'down',
-    x: ['Trial 1', 'Trial 2', 'Trial 3'],
-    y: [4, 7, 3],
+    x: ['avg ph', 'avg temp', 'avg humidity'],
+    y: [5, 20, 60 ],
     name: 'Experimental',
     error_y: {
       type: 'data',
-      array: [0.5, 1, 2],
+      array: [0.5, 10, 5],
       visible: true
     },
     type: 'bar'

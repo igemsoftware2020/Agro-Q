@@ -35,7 +35,26 @@ class O2Screen extends Component {
     }
 
   render () {
-    const data = [3,2,2,1,3,3,3,2,3,2,2]
+    const lightHistory = [520,525,525];
+    const lighthistoryLatest = [];
+    var i;
+    
+    for (i = 0; i < 5; i++) {
+     var x = Math.random(-20,20);
+     x = x*100;
+     console.log(x);
+     x = global.light + x;
+     x = Math.round(x);
+     lighthistoryLatest.push(x);
+     console.log(x);
+     console.log(lighthistoryLatest);
+
+     
+    } 
+    var time = global.time.toString();
+  var Time =  'FirestoreTimestamp';
+  var latestlight = global.light;
+  global.lightdata = [latestlight,lighthistoryLatest[5],lighthistoryLatest[4],lighthistoryLatest[3],lighthistoryLatest[2],lighthistoryLatest[1],lightHistory[1],lightHistory[0]];
  
         const contentInset = { top: 20, bottom: 20 }
  return (
@@ -69,37 +88,37 @@ class O2Screen extends Component {
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{global.light}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time} </DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{lighthistoryLatest[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{lighthistoryLatest[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time} </DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{lightHistory[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{lightHistory[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time} </DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>{lightHistory[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -141,7 +160,7 @@ class O2Screen extends Component {
                  <Text>Chart</Text>
                  <View style={{ height: 200, flexDirection: 'row' }}>
                      <YAxis
-                         data={data}
+                         data={global.lightdata}
                          contentInset={contentInset}
                          svg={{
                              fill: 'grey',
@@ -152,7 +171,7 @@ class O2Screen extends Component {
                      />
                      <LineChart
                          style={{ flex: 1, marginLeft: 16 }}
-                         data={data}
+                         data={global.lightdata}
                          svg={{ stroke: 'rgb(134, 65, 244)' }}
                          contentInset={contentInset}
                      >

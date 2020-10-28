@@ -88,7 +88,7 @@ const spc = ({navigation}) => {
       <View style={styles.chartRow}>
         <Plotly
           data={[Data,Viol,CL,Centre]}
-          layout={{ title: 'Sysem Health',
+          layout={{ title: 'System Health',
           xaxis: {
             zeroline: false
           },

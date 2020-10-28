@@ -21,18 +21,15 @@ const DetailsScreen = ({navigation}) => {
           title='Symmetric Error Bars'/>
           <SettingsList.Item 
           onPress={() => navigation.navigate('BoxPlot')}
-          title='Box Plot'/>
+          title='Bar Plot'/>
           <SettingsList.Item 
           onPress={() => navigation.navigate('logisticRegression')}
           title='Logistic Regression'/>
-          <SettingsList.Item
-          onPress={() => navigation.navigate('2dHCP')}
-          title='2d Countour Plot '/>
           <SettingsList.Item 
           onPress={() => navigation.navigate("cdp")}
           title='Catagorical Dot Plot'/>
           <SettingsList.Item onPress={() => navigation.navigate("spc")} title='SPC Control Chart'/>
-          <SettingsList.Item onPress={() => navigation.navigate("pointCloud")} title='Point Cloud'/>
+          
      
         </SettingsList>
 

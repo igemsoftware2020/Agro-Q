@@ -5,8 +5,8 @@ import Plotly from 'react-native-plotly';
 
 const upTrace = {
     __id: 'up',
-    x: [0, 1, 2],
-    y: [6, 10, 2],
+    x: [4, 7, 3],
+    y: [3, 5, 4],
     error_y: {
       type: 'data',
       array: [1, 2, 3],
@@ -57,7 +57,7 @@ const SER = ({navigation}) => {
       <View style={styles.chartRow}>
         <Plotly
           data={[trace]}
-          layout={{ title: "Plant Health - error bar chart"}}
+          layout={{ title: "ph to plant groth error"}}
           update={update}
           onLoad={() => setLoading(false)}
           debug

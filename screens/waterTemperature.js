@@ -35,7 +35,27 @@ class waterTempScreen extends Component {
     }
 
   render () {
-    const data = [18,18,19,18,20,22,23,24]
+    const wtempHistory = [18,19,18];
+    const wtemphistoryLatest = [];
+    var i;
+    
+    for (i = 0; i < 5; i++) {
+     var x = Math.random(-1,2);
+     x = x*10;
+     console.log(x);
+     x = global.waterTemp + x;
+     x = Math.round(x);
+     wtemphistoryLatest.push(x);
+     console.log(x);
+     console.log(wtemphistoryLatest);
+
+     
+    } 
+    var time = global.time.toString();
+  //var Time =  'FirestoreTimestamp';
+  var wlatesttemp = global.waterTemp;
+  global.waterdata = [wtemphistoryLatest[0],wtemphistoryLatest[5],wtemphistoryLatest[4],wtemphistoryLatest[3],wtemphistoryLatest[2],wtemphistoryLatest[1],wtempHistory[1],wtempHistory[0]];
+ 
  
         const contentInset = { top: 20, bottom: 20 }
  return (
@@ -64,42 +84,42 @@ class waterTempScreen extends Component {
           <DataTable>
     <DataTable.Header>
       <DataTable.Title numeric>Reading Date/Time</DataTable.Title>
-      <DataTable.Title numeric>Humidity</DataTable.Title>
+      <DataTable.Title numeric>Water Temp</DataTable.Title>
      
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 10/25/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>24</DataTable.Cell>
+       <DataTable.Cell numeric>{global.waterTemp}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>2:00pm 10/25/2020</DataTable.Cell>
+      <DataTable.Cell>{time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>24</DataTable.Cell>
+       <DataTable.Cell numeric>{wtemphistoryLatest[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>1:00pm 10/25/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>23</DataTable.Cell>
+       <DataTable.Cell numeric>{wtemphistoryLatest[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00pm 10/25/2020</DataTable.Cell>
+      <DataTable.Cell>{time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>23</DataTable.Cell>
+       <DataTable.Cell numeric>{wtempHistory[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>11:00am 10/25/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>23</DataTable.Cell>
+       <DataTable.Cell numeric>{wtempHistory[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>10:00am 10/25/2020</DataTable.Cell>
+      <DataTable.Cell>{time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>22</DataTable.Cell>
+       <DataTable.Cell numeric>{wtempHistory[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -142,7 +162,7 @@ class waterTempScreen extends Component {
                  <Text>Chart</Text>
                  <View style={{ height: 200, flexDirection: 'row' }}>
                      <YAxis
-                         data={data}
+                         data={global.waterdata}
                          contentInset={contentInset}
                          svg={{
                              fill: 'grey',
@@ -153,7 +173,7 @@ class waterTempScreen extends Component {
                      />
                      <LineChart
                          style={{ flex: 1, marginLeft: 16 }}
-                         data={data}
+                         data={global.waterdata}
                          svg={{ stroke: 'rgb(134, 65, 244)' }}
                          contentInset={contentInset}
                      >

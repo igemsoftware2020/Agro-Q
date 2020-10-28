@@ -220,7 +220,7 @@ const HomeStackScreen = ({navigation}) => (
     
     />
      <SensorStack.Screen
-    name="O2 Stats"
+    name="Light Stats"
     component={O2}
     
     />
