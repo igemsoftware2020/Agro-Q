@@ -64,21 +64,21 @@ Screens Descriptions:
 
 <br>
 <a href="#">
-    <img src="https://2020.igem.org/wiki/images/5/58/T--Lambert_GA--Agro1.png" alt="Logo" width="10%" height="10%">
+    <img src="https://2020.igem.org/wiki/images/5/58/T--Lambert_GA--Agro1.png" alt="appscreen1" width="10%" height="10%">
   </a>
  <br>
 
 
 <br>
 <a href="#">
-    <img src=' https://2020.igem.org/wiki/images/a/a2/T--Lambert_GA--home.png' alt="Logo" width="10%" height="10%">
+    <img src=' https://2020.igem.org/wiki/images/a/a2/T--Lambert_GA--home.png' alt="appscreen1" width="10%" height="10%">
   </a>
   <br>
 
 
 <br>
 <a href="#">
-    <img src=' https://2020.igem.org/wiki/images/e/e0/T--Lambert_GA--Agro3.png' alt="Logo" width="10%" height="10%">
+    <img src=' https://2020.igem.org/wiki/images/e/e0/T--Lambert_GA--Agro3.png' alt="appscreen1" width="10%" height="10%">
   </a>
 
   <br>
@@ -86,7 +86,7 @@ Screens Descriptions:
 
 <br>
  <a href="#">
-    <img src='https://2020.igem.org/wiki/images/3/3e/T--Lambert_GA--Agro5.png' alt="Logo" width="10%" height="10%">
+    <img src='https://2020.igem.org/wiki/images/3/3e/T--Lambert_GA--Agro5.png' alt="appscreen1" width="10%" height="10%">
   </a>
   <br>
 
@@ -94,7 +94,7 @@ Screens Descriptions:
 
 <br>
  <a href="#">
-    <img src='https://2020.igem.org/wiki/images/1/15/T--Lambert_GA--Agro6.png' alt="Logo" width="10%" height="10%">
+    <img src='https://2020.igem.org/wiki/images/1/15/T--Lambert_GA--Agro6.png' alt="appscreen1" width="10%" height="10%">
   </a>
 
   <br>
@@ -103,7 +103,7 @@ Screens Descriptions:
 
 <br>
 <a href="#">
-    <img src=' https://2020.igem.org/wiki/images/e/e0/T--Lambert_GA--Agro7.png' alt="Logo" width="10%" height="10%">
+    <img src=' https://2020.igem.org/wiki/images/e/e0/T--Lambert_GA--Agro7.png' alt="appscreen1" width="10%" height="10%">
   </a>
 
   <br>
@@ -112,7 +112,7 @@ Screens Descriptions:
 
 <br>
 <a href="#">
-    <img src='https://2020.igem.org/wiki/images/7/7e/T--Lambert_GA--Agro9.png' alt="Logo" width="10%" height="10%">
+    <img src='https://2020.igem.org/wiki/images/7/7e/T--Lambert_GA--Agro9.png' alt="appscreen1" width="10%" height="10%">
   </a>
 
 <br>
