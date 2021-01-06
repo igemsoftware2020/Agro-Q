@@ -140,7 +140,9 @@ Once the data is collected from the sensors, the data is sent to the Raspberry P
 
 ## Installation
 
-AgroSENSE uses React Native . First, install the React Native CLI using the instructions at https://reactnative.dev/docs/environment-setup. 
+Agro-Q uses React Native . First, install the React Native CLI using the instructions at https://reactnative.dev/docs/environment-setup. 
+Select the “React Native CLI Quickstart” option and your desired platforms and complete the installation with the instructions provided.
+
 
 Download the project files to your computer
 
