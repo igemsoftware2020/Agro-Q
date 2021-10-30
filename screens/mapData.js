@@ -8,47 +8,58 @@ const Images = [
   
 ];
 
+
+
+
+
+
+
+
+ 
 export const markers = [
+    
+
     {
+        
         coordinate: {
-        latitude: 22.6293867,
-        longitude: 88.4354486,
+        latitude: 34.105793,
+        longitude: -84.137916,
         },
-        title: "Test1",
-        description: "this is a random description that goes here",
+        title: "Lambert Highschool",
+        description: "Hydroponics System of Lambert iGEM",
         image: Images[0].image,
 
         
     },
     {
         coordinate: {
-            latitude: 22.6345648,
-            longitude: 88.4377279,
+            latitude: 34.102680,
+            longitude: -84.135540,
         },
-        title: "Test2",
-        description: "this is a random description that goes here",
+        title: "Test Location 2",
+        description: "Test Location to show proof of concept. Real locations will be added with the realse of the app on the app store",
         image: Images[1].image,
 
         
     },
     {
         coordinate: {
-            latitude: 22.6281662,
-        longitude: 88.4410113,
+            latitude: 34.148479,
+        longitude: -84.171593,
         },
-        title: "Test3",
-        description: "this is a random description that goes here",
+        title: "Test Location 3",
+        description: "Test Location to show proof of concept. Real locations will be added with the realse of the app on the app store",
         image: Images[2].image,
 
         
     },
     {
         coordinate: {
-            latitude: 22.6292757,
-        longitude: 88.444781,
+            latitude: 34.072950,
+        longitude: -84.124130,
         },
-        title: "Test4",
-        description: "this is a random description that goes here",
+        title: "Location 4",
+        description: "Test Location to show proof of concept. Real locations will be added with the realse of the app on the app store",
         image: Images[3].image,
 
         

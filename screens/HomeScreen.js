@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image,Button, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
+import { View, Text, Image,Button, StyleSheet, StatusBar, TouchableOpacity, FlatList } from 'react-native';
 import Swiper from 'react-native-swiper';
-import firebase from 'firebase';
+import firebase from '@react-native-firebase/app';
 import { firebaseApp } from '../environment/config';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -20,30 +20,140 @@ import Icon from "../components/Icon";
 import Card from "../components/Card";
 
 
-
-
+var firstData=null;
 const HomeScreen = ({navigation}) => {
   console.log("starting");
-  const[system, setSystem]= useState({});
+  const[hsystem, setHsystem]= useState({});
+  
+  
+  var stylerco2;
+  var iconUsedco2;
+  var stylertemp;
+  var iconUsedtemp;
+ 
+  var systemHealth = 0;
+  
+  var stylerhumidity;
+  var iconUsedhumidity;
+  
+  var stylerph;
+  var iconUsedph;
+  
+  var stylerwaterTemp;
+  var iconUsedwaterTemp;
+  
+  var stylersyshealth ;
+  var iconUsedsyshealth ;
+  const checkValidity= ()=>{
+    
+  console.log('this temp: '+ global.temp)
+  if (global.temp > 18 && global.temp < 26){
+    stylertemp = styles.categoryIcon2;
+    iconUsedtemp = "checkmark";
+  }else {
+    stylertemp = styles.categoryIcon3;
+    iconUsedtemp = "alert-outline";
 
-  useEffect(() => {
+  }
+  if (global.humidity > 60 && global.humidity < 70){
+    stylerhumidity = styles.categoryIcon2;
+    iconUsedhumidity = "checkmark";
+  }else {
+    stylerhumidity = styles.categoryIcon3;
+    iconUsedhumidity = "alert-outline";
+    systemHealth=systemHealth+1;
+
+  }
+  if (global.ph > 60 && global.ph < 70){
+    stylerph = styles.categoryIcon2;
+    iconUsedph = "checkmark";
+  }else {
+    stylerph = styles.categoryIcon3;
+    iconUsedph = "alert-outline";
+    systemHealth=systemHealth+1;
+
+  }
+  if (global.co2 > 400 && global.co2 < 1500){
+    stylerco2 = styles.categoryIcon2;
+    iconUsedco2 = "checkmark";
+  }else {
+    stylerco2 = styles.categoryIcon3;
+    iconUsedco2 = "alert-outline";
+    systemHealth=systemHealth+1;
+
+  }
+  if (global.waterTemp > 18 && global.waterTemp < 26){
+    stylerwaterTemp = styles.categoryIcon2;
+    iconUsedwaterTemp = "checkmark";
+  }else {
+    stylerwaterTemp = styles.categoryIcon3;
+    iconUsedwaterTemp = "alert-outline";
+    systemHealth=systemHealth+1;
+
+  }
+  
+  if  (systemHealth > 2) {
+    stylersyshealth = styles.categoryIcon3;
+    iconUsedsyshealth = "alert-outline";
+
+  } else{
+    stylersyshealth = styles.categoryIcon;
+    iconUsedsyshealth = "happy";
+   
+  }
+  
+
+  };
+
+
+
+ useEffect(() => {
     console.log("useeffect");
+    
     const fetch= async()=>{
       console.log("fetch start");
       const xDB = new DBInteraction();
-    var data =await xDB.getCurrentData('lambert');
-    console.log(data);
-    setSystem(data);
+    var finalData =await xDB.getCurrentData('lambert');
+    console.log(finalData);
+    
+     setHsystem(finalData);
+     console.log("the temp" + finalData.Temp);
+     //Initializing variabbles for app use
+     global.temp = finalData.Temp;
+     global.co2=finalData.co2;
+     global.ph=finalData.Ph;
+     global.humidity=finalData.humidity;
+     global.longitude=finalData.longitude;
+     global.latitude=finalData.latitude;
+     global.light=finalData.light;
+     global.location= finalData.location;
+     global.time=finalData.time;
+     global.waterTemp=finalData.waterTemp;
+     checkValidity();
 
+     console.log("ph"+global.ph);
+
+  
+    
+    // firstData = finalData
+   
     
     }
+     if ( firstData ==null) 
+      fetch();
     
-    fetch();
-    
-  });
-
+  },
  
+  []);
+
+
+  
+  
     return (
+
+      
+      
+       
       <ScrollView style= {styles.container}>
          <View style={styles.sliderContainer}>
         <Swiper autoplay horizontal= {false}height={200} activeDotColor="#90ee90">
@@ -80,8 +190,8 @@ const HomeScreen = ({navigation}) => {
           style={styles.categoryBtn}>
           <View style={{flexDirection:"row", justifyContent:"center"}}>
             <Text style={{marginTop:17, fontWeight: 'bold', fontSize:20 }}>System Health:    </Text>
-          <View style={styles.categoryIcon}>
-            <Ionicons name="happy" size={35} color="#013220" />
+          <View style={stylersyshealth}>
+            <Ionicons name={iconUsedsyshealth} size={35} color="#013220" />
           </View>
           </View>
           
@@ -105,22 +215,26 @@ const HomeScreen = ({navigation}) => {
 
         <Block row style={[styles.margin, { marginTop: 18 }]}>
             <Card middle style={{ marginRight: 7 }}>
-            <View style={styles.categoryIcon2}>
-            <Ionicons name="checkmark" size={35} color="#013220" />
+            <View style={stylertemp}>
+            <Ionicons name={iconUsedtemp} size={35} color="#013220" />
+                                          
           </View>
-        <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Temp: {system.temp}</Text>
+          
+        <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Temp:{hsystem.Temp} </Text>
+       
         
-              <Text paragraph color="gray">Temp on track</Text>
+              <Text paragraph color="gray">Celcius</Text>
             </Card>
         
         
             
             <Card middle style={{ marginLeft: 7 }}>
-            <View style={styles.categoryIcon2}>
-            <Ionicons name="checkmark" size={35} color="#013220" />
+            <View style={stylerhumidity}>
+            <Ionicons name={iconUsedhumidity} size={35} color="#013220" />
           </View>
-              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Humidity: 40</Text>
-              <Text paragraph color="gray">Humidity on track</Text>
+        <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Humidity: {hsystem.humidity}</Text>
+        
+              <Text paragraph color="gray">Percent</Text>
             </Card>
           </Block>
 
@@ -134,20 +248,22 @@ const HomeScreen = ({navigation}) => {
 
         <Block row style={[styles.margin, { marginTop: 18 }]}>
             <Card middle style={{ marginRight: 7 }}>
-            <View style={styles.categoryIcon3}>
-            <Ionicons name="alert-outline" size={35} color="#013220" />
+            <View style={styles.categoryIcon2}>
+            <Ionicons name="checkmark" size={35} color="#013220" />
           </View>
-              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>O2: 30</Text>
+              <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Light: {hsystem.light}</Text>
+              <Text paragraph color="gray">Lumens</Text>
               
-            </Card>
+            </Card> 
         
         
             
             <Card middle style={{ marginLeft: 7 }}>
-            <View style={styles.categoryIcon2}>
-            <Ionicons name="checkmark" size={35} color="#013220" />
+            <View style={stylerwaterTemp}>
+            <Ionicons name={iconUsedwaterTemp} size={35} color="#013220" />
           </View>
-              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Water Temp: 30</Text>
+        <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Water: {hsystem.waterTemp}</Text>
+              <Text paragraph color="gray">Celcius</Text>
             
             </Card>
           </Block>
@@ -163,21 +279,21 @@ const HomeScreen = ({navigation}) => {
 
         <Block row style={[styles.margin, { marginTop: 18 }]}>
             <Card middle style={{ marginRight: 7 }}>
-            <View style={styles.categoryIcon2}>
-            <Ionicons name="checkmark" size={35} color="#013220" />
+            <View style={stylerco2}>
+            <Ionicons name={iconUsedco2} size={35} color="#013220" />
           </View>
-              <Text  h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Co2: 700</Text>
-              <Text paragraph color="gray">Co2 on track</Text>
+        <Text  h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>Co2: {hsystem.co2}</Text>
+              <Text paragraph color="gray">PPMs</Text>
             </Card>
         
         
             
             <Card middle style={{ marginLeft: 7 }}>
-            <View style={styles.categoryIcon3}>
-            <Ionicons name="alert-outline" size={35} color="#013220" />
+            <View style={stylerph}>
+            <Ionicons name={iconUsedph} size={35} color="#013220" />
           </View>
-              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>PH: 4</Text>
-              <Text paragraph color="gray">PH on Track</Text>
+              <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>PH: {hsystem.Ph}</Text>
+              <Text paragraph color="gray">logarithm of H+</Text>
             </Card>
           </Block>
 

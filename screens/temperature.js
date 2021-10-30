@@ -35,7 +35,27 @@ class TempScreen extends Component {
     }
 
   render () {
-    const data = [3,2,2,1,3,3,3,2,3,2,2]
+    const tempHistory = [20,21,20];
+    const temphistoryLatest = [];
+    var i;
+    
+    for (i = 0; i < 5; i++) {
+     var x = Math.random(-1,2);
+     x = x*10;
+     console.log(x);
+     x = global.temp + x;
+     x = Math.round(x);
+     temphistoryLatest.push(x);
+     console.log(x);
+     console.log(temphistoryLatest);
+
+     
+    } 
+    var time = global.time.toString();
+  //var Time =  'FirestoreTimestamp';
+  var latesttemp = global.temp;
+  global.tempdata = [latesttemp,temphistoryLatest[5],temphistoryLatest[4],temphistoryLatest[3],temphistoryLatest[2],temphistoryLatest[1],tempHistory[1],tempHistory[0]];
+ 
  
         const contentInset = { top: 20, bottom: 20 }
  return (
@@ -64,42 +84,42 @@ class TempScreen extends Component {
           <DataTable>
     <DataTable.Header>
       <DataTable.Title numeric>Reading Date/Time</DataTable.Title>
-      <DataTable.Title numeric>Humidity</DataTable.Title>
+      <DataTable.Title numeric>Temp</DataTable.Title>
      
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{global.temp}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{time} </DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>{temphistoryLatest[1]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{temphistoryLatest[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{time} </DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>{tempHistory[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{tempHistory[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{time} </DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{tempHistory[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -141,7 +161,7 @@ class TempScreen extends Component {
                  <Text>Chart</Text>
                  <View style={{ height: 200, flexDirection: 'row' }}>
                      <YAxis
-                         data={data}
+                         data={global.tempdata}
                          contentInset={contentInset}
                          svg={{
                              fill: 'grey',
@@ -152,7 +172,7 @@ class TempScreen extends Component {
                      />
                      <LineChart
                          style={{ flex: 1, marginLeft: 16 }}
-                         data={data}
+                         data={global.tempdata}
                          svg={{ stroke: 'rgb(134, 65, 244)' }}
                          contentInset={contentInset}
                      >

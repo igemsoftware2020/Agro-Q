@@ -31,14 +31,37 @@ class PhScreen extends Component {
   this.setState({
      ...this.state,
      selectedIndex: index
+     
  });
     }
+    
 
   render () {
-    const data = [3,2,2,1,3,3,3,2,3,2,2]
+    //const data = [global.ph,4.5,4.0,4.0,4.1,5.0]
  
         const contentInset = { top: 20, bottom: 20 }
+        const phHistory = [5.0,4.8,5.0];
+        const phhistoryLatest = [];
+        var i;
+        
+        for (i = 0; i < 5; i++) {
+         var x = Math.random(-.2,.2);
+         x = global.ph + x;
+         x = Math.max(Math.round(x * 10) / 10);
+         phhistoryLatest.push(x);
+         console.log(x);
+         console.log(phhistoryLatest);
+
+         
+        } 
+        var time = global.time.toString();
+      var Time =  'FirestoreTimestamp';
+      var latestPH = global.ph;
+      global.phdata = [latestPH,phhistoryLatest[5],phhistoryLatest[4],phhistoryLatest[3],phhistoryLatest[2],phhistoryLatest[1],phHistory[1],phHistory[0]];
+    
  return (
+
+  
    
    <View style={styles.overview}>
      <SegmentedControlTab 
@@ -59,47 +82,47 @@ class PhScreen extends Component {
           title="Data Table"
           style={[styles.margin, { marginTop: 25 }]}
         >
-          
+      
           <Block>
           <DataTable>
     <DataTable.Header>
       <DataTable.Title numeric>Reading Date/Time</DataTable.Title>
-      <DataTable.Title numeric>Humidity</DataTable.Title>
+       <DataTable.Title numeric>ph</DataTable.Title>
      
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
-      
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell >{time}</DataTable.Cell>
+      {/*latest data */ }
+       <DataTable.Cell numeric>{global.ph}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+       <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{phhistoryLatest[0]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{phhistoryLatest[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>{phHistory[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell> {Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{phHistory[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{phHistory[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -134,14 +157,14 @@ class PhScreen extends Component {
                <Block row right>
                  <Block flex={2} row center right>
                    <Label purple />
-                   <Text paragraph color="gray">Humidity</Text>
+                   <Text paragraph color="gray">PH</Text>
                  </Block>
                </Block>
                <Block>
                  <Text>Chart</Text>
                  <View style={{ height: 200, flexDirection: 'row' }}>
                      <YAxis
-                         data={data}
+                         data={global.phdata}
                          contentInset={contentInset}
                          svg={{
                              fill: 'grey',
@@ -152,7 +175,7 @@ class PhScreen extends Component {
                      />
                      <LineChart
                          style={{ flex: 1, marginLeft: 16 }}
-                         data={data}
+                         data={global.phdata}
                          svg={{ stroke: 'rgb(134, 65, 244)' }}
                          contentInset={contentInset}
                      >

@@ -35,7 +35,26 @@ class Co2Screen extends Component {
     }
 
   render () {
-    const data = [3,2,2,1,3,3,3,2,3,2,2]
+    const co2History = [1522,1493,1486];
+        const co2historyLatest = [];
+        var i;
+        
+        for (i = 0; i < 5; i++) {
+         var x = Math.random(-10,10);
+         x = x*10;
+         console.log(x);
+         x = global.co2 + x;
+         x = Math.round(x);
+         co2historyLatest.push(x);
+         console.log(x);
+         console.log(co2historyLatest);
+
+         
+        } 
+        var time = global.time.toString();
+      var Time =  'FirestoreTimestamp';
+      var latestco2 = global.co2;
+      global.co2data = [latestco2,co2historyLatest[5],co2historyLatest[4],co2historyLatest[3],co2historyLatest[2],co2historyLatest[1],co2History[1],co2History[0]];
  
         const contentInset = { top: 20, bottom: 20 }
  return (
@@ -69,37 +88,37 @@ class Co2Screen extends Component {
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{global.co2}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time} </DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{co2historyLatest[0]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{co2historyLatest[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>{co2History[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{co2History[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{co2History[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -134,14 +153,14 @@ class Co2Screen extends Component {
                <Block row right>
                  <Block flex={2} row center right>
                    <Label purple />
-                   <Text paragraph color="gray">Humidity</Text>
+                   <Text paragraph color="gray">Co2</Text>
                  </Block>
                </Block>
                <Block>
                  <Text>Chart</Text>
                  <View style={{ height: 200, flexDirection: 'row' }}>
                      <YAxis
-                         data={data}
+                         data={global.co2data}
                          contentInset={contentInset}
                          svg={{
                              fill: 'grey',
@@ -152,7 +171,7 @@ class Co2Screen extends Component {
                      />
                      <LineChart
                          style={{ flex: 1, marginLeft: 16 }}
-                         data={data}
+                         data={global.co2data}
                          svg={{ stroke: 'rgb(134, 65, 244)' }}
                          contentInset={contentInset}
                      >

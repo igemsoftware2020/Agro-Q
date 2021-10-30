@@ -38,14 +38,20 @@ const OnboardingScreen = ({navigation}) => {
           {
             backgroundColor: '#F4D4A4',
             image: <Image source={require('../assets/agriculture.png')} />,
-            title: 'Helpful',
-            subtitle: 'Agro-Q aims to revolutionize hydroponics',
+            title: 'Goal',
+            subtitle: 'Agro-Q aims to revolutionize hydroponics and make maintaining hydroponic systems easier than ever. This is done through the use of sensors, microcontrollers, and cloud databases.',
           },
           {
             backgroundColor: '#C8CDCF',
             image: <Image source={require('../assets/motherboard.png')} />,
             title: 'Setup',
-            subtitle: 'Follow instructions in the agroQ app',
+            subtitle: 'Before starting make sure to set up and connect the hardware to this app. For first time set up please follow the instructions on our supplemental AgroSense app. ',
+          },
+          {
+            backgroundColor: '#E7E7EB',
+            image: <Image source={require('../assets/github.png')} />,
+            title: 'Setup',
+            subtitle: 'For any help or concerns contact us on out github repository',
           },
         
         ]}

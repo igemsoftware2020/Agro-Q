@@ -26,7 +26,9 @@ const DetailsStack = createStackNavigator();
 const SensorStack = createStackNavigator();
 const ProfileStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
+
 const MainTabScreen = () => ( 
+  
     <Tab.Navigator
       initialRouteName="Home"
       activeColor="#fff"
@@ -218,7 +220,7 @@ const HomeStackScreen = ({navigation}) => (
     
     />
      <SensorStack.Screen
-    name="O2 Stats"
+    name="Light Stats"
     component={O2}
     
     />

@@ -19,6 +19,7 @@ import * as theme from '../constants/theme';
 import SegmentedControlTab from "react-native-segmented-control-tab";
 
 class humidityScreen extends Component {
+  
 	
   constructor() {
  super();
@@ -35,7 +36,27 @@ class humidityScreen extends Component {
     }
 
   render () {
-    const data = [3,2,2,1,3,3,3,2,3,2,2]
+    const humidityHistory = [60,62,63];
+    const humidityhistoryLatest = [];
+    var i;
+    
+    for (i = 0; i < 5; i++) {
+     var x = Math.random(-5,5);
+     x = x*100;
+     console.log(x);
+     x = global.humidity + x;
+     x = Math.round(x);
+     humidityhistoryLatest.push(x);
+     console.log(x);
+     console.log(humidityhistoryLatest);
+
+     
+    } 
+    var time = global.time.toString();
+  var Time =  'FirestoreTimestamp';
+  var latesthumidity = global.humidity;
+  global.humiditydata = [latesthumidity,humidityhistoryLatest[5],humidityhistoryLatest[4],humidityhistoryLatest[3],humidityhistoryLatest[2],humidityhistoryLatest[1],humidityHistory[1],humidityHistory[0]];
+
  
         const contentInset = { top: 20, bottom: 20 }
  return (
@@ -69,37 +90,38 @@ class humidityScreen extends Component {
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{global.humidity}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+      <DataTable.Cell numeric>{humidityhistoryLatest[1]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{humidityhistoryLatest[0]}
+      </DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{humidityHistory[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{Time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+      <DataTable.Cell numeric>{humidityHistory[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{Time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{humidityHistory[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -111,6 +133,7 @@ class humidityScreen extends Component {
       label="1-2 of 6"
     />
   </DataTable>
+            
             
           </Block>
         </Card>
@@ -141,7 +164,7 @@ class humidityScreen extends Component {
                  <Text>Chart</Text>
                  <View style={{ height: 200, flexDirection: 'row' }}>
                      <YAxis
-                         data={data}
+                         data={global.humiditydata}
                          contentInset={contentInset}
                          svg={{
                              fill: 'grey',
@@ -152,7 +175,7 @@ class humidityScreen extends Component {
                      />
                      <LineChart
                          style={{ flex: 1, marginLeft: 16 }}
-                         data={data}
+                         data={global.humiditydata}
                          svg={{ stroke: 'rgb(134, 65, 244)' }}
                          contentInset={contentInset}
                      >

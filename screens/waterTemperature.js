@@ -35,7 +35,27 @@ class waterTempScreen extends Component {
     }
 
   render () {
-    const data = [3,2,2,1,3,3,3,2,3,2,2]
+    const wtempHistory = [18,19,18];
+    const wtemphistoryLatest = [];
+    var i;
+    
+    for (i = 0; i < 5; i++) {
+     var x = Math.random(-1,2);
+     x = x*10;
+     console.log(x);
+     x = global.waterTemp + x;
+     x = Math.round(x);
+     wtemphistoryLatest.push(x);
+     console.log(x);
+     console.log(wtemphistoryLatest);
+
+     
+    } 
+    var time = global.time.toString();
+  //var Time =  'FirestoreTimestamp';
+  var wlatesttemp = global.waterTemp;
+  global.waterdata = [wtemphistoryLatest[0],wtemphistoryLatest[5],wtemphistoryLatest[4],wtemphistoryLatest[3],wtemphistoryLatest[2],wtemphistoryLatest[1],wtempHistory[1],wtempHistory[0]];
+ 
  
         const contentInset = { top: 20, bottom: 20 }
  return (
@@ -64,42 +84,42 @@ class waterTempScreen extends Component {
           <DataTable>
     <DataTable.Header>
       <DataTable.Title numeric>Reading Date/Time</DataTable.Title>
-      <DataTable.Title numeric>Humidity</DataTable.Title>
+      <DataTable.Title numeric>Water Temp</DataTable.Title>
      
     </DataTable.Header>
 
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+       <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{global.waterTemp}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{wtemphistoryLatest[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{wtemphistoryLatest[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{wtempHistory[2]}</DataTable.Cell>
     </DataTable.Row>
     <DataTable.Row>
-      <DataTable.Cell numeric>3:00pm 7/5/2020</DataTable.Cell>
+      <DataTable.Cell numeric>{time}</DataTable.Cell>
       
-      <DataTable.Cell numeric>6.0</DataTable.Cell>
+       <DataTable.Cell numeric>{wtempHistory[1]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Row>
-      <DataTable.Cell>12:00 pm 9/8/2020 </DataTable.Cell>
+      <DataTable.Cell>{time}</DataTable.Cell>
      
-      <DataTable.Cell numeric>8.0</DataTable.Cell>
+       <DataTable.Cell numeric>{wtempHistory[0]}</DataTable.Cell>
     </DataTable.Row>
 
     <DataTable.Pagination
@@ -111,6 +131,7 @@ class waterTempScreen extends Component {
       label="1-2 of 6"
     />
   </DataTable>
+            
             
           </Block>
         </Card>
@@ -134,14 +155,14 @@ class waterTempScreen extends Component {
                <Block row right>
                  <Block flex={2} row center right>
                    <Label purple />
-                   <Text paragraph color="gray">Humidity</Text>
+                   <Text paragraph color="gray">Water Temp</Text>
                  </Block>
                </Block>
                <Block>
                  <Text>Chart</Text>
                  <View style={{ height: 200, flexDirection: 'row' }}>
                      <YAxis
-                         data={data}
+                         data={global.waterdata}
                          contentInset={contentInset}
                          svg={{
                              fill: 'grey',
@@ -152,7 +173,7 @@ class waterTempScreen extends Component {
                      />
                      <LineChart
                          style={{ flex: 1, marginLeft: 16 }}
-                         data={data}
+                         data={global.waterdata}
                          svg={{ stroke: 'rgb(134, 65, 244)' }}
                          contentInset={contentInset}
                      >

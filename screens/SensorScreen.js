@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 import { View, Text, Button, StyleSheet, StatusBar,SafeAreaView,ScrollView, TouchableOpacity, Image } from 'react-native';
 
 
@@ -7,16 +7,75 @@ import Icon from "../components/Icon";
 import Card from "../components/Card";
 import Label from "../components/Label";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { DBInteraction } from '../environment/db';
 
 import { LineChart, YAxis, Grid } from 'react-native-svg-charts'
 
 
 import * as theme from '../constants/theme';
+import react from 'react';
 
+
+
+var firstData=null;
 const SensorScreen = ({navigation}) => {
-  const data = [3,2,2,1,3,3,3,2,3,2,2]
+  console.log("starting");
+  const[hsystem, setHsystem]= useState({});
+  
+ useEffect(() => {
+    console.log("useeffect");
+    
+    const fetch= async()=>{
+      console.log("fetch start");
+      const xDB = new DBInteraction();
+    var finalData =await xDB.getCurrentData('lambert');
+    console.log(finalData);
+     setHsystem(finalData);
+    // firstData = finalData
+   
+    
+    }
+     if ( firstData ==null)
+      fetch();
+    
+  },
  
+  []);
+  //caclulation for system health
+  ///////////////////////////////////
+  /*
+  global.systemHealth;
+  if (hsystem.temp >20 ) {
+    x = 3;
+  }
+  if (x > 50) {
+   
+  }
+  if (x > 50) {
+   
+  }
+  if (x > 50) {
+  
+  }
+  if (x > 50) {
+    
+  }
+  if (x > 50) {
+   
+  }
+  */
+//////////////////////////////////////////
+  const data = [3,2,2,1,3,3,3,2,3,2,2];
+  const phtest = [];
+
+  phtest.push(hsystem.ph);
+  console.log(hsystem.ph);
+
+  console.log("pushed: " + phtest);
+
+
         const contentInset = { top: 20, bottom: 20 }
+  
     return (
       <SafeAreaView style={styles.overview}>
       <ScrollView contentContainerStyle={{ paddingVertical: 25 }}>
@@ -43,7 +102,7 @@ const SensorScreen = ({navigation}) => {
           <Block row right>
             <Block flex={2} row center right>
               <Label purple />
-              <Text paragraph color="gray">Health</Text>
+    <Text paragraph color="gray">Health </Text>
             </Block>
           </Block>
           <Block>
@@ -102,10 +161,13 @@ const SensorScreen = ({navigation}) => {
           paddingRight: Platform.OS === 'android' ? 20 : 0
         }}
       >
-
+  
      
         <TouchableOpacity
-        onPress={() => navigation.navigate('PH Stats')}>
+        onPress={() => navigation.navigate('PH Stats', {
+          ph : hsystem.ph,})}>
+
+            
           <Card middle style={{  marginLeft:10}}>
             <Icon ph/>
             <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold', }}>PH</Text>
@@ -114,7 +176,7 @@ const SensorScreen = ({navigation}) => {
           </TouchableOpacity>
 
           <TouchableOpacity
-          onPress={() => navigation.navigate('Humidity Stats')}
+          onPress={() => navigation.navigate('Humidity Stats', {humidity : hsystem.humidity})}
          >
           <Card middle style={{  marginLeft: 7}}>
             <Icon humidity />
@@ -124,7 +186,7 @@ const SensorScreen = ({navigation}) => {
           </TouchableOpacity>
        
           <TouchableOpacity
-           onPress={() => navigation.navigate('Co2 Stats')}
+           onPress={() => navigation.navigate('Co2 Stats',{co2:hsystem.co2})}
           
           >
           <Card middle style={{ marginLeft: 7 }}>
@@ -135,7 +197,7 @@ const SensorScreen = ({navigation}) => {
           </TouchableOpacity>
 
           <TouchableOpacity
-          onPress={() => navigation.navigate('Water Temp Stats')}>
+          onPress={() => navigation.navigate('Water Temp Stats', {waterTemp : hsystem.waterTemp})}>
           <Card middle style={{ marginLeft: 7 }}>
             <Icon waterTemp />
             <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Water Temp</Text>
@@ -143,19 +205,19 @@ const SensorScreen = ({navigation}) => {
           </Card>
           </TouchableOpacity>
           <TouchableOpacity
-           onPress={() => navigation.navigate('Atmospheric Temperature Stats')}>
+           onPress={() => navigation.navigate('Atmospheric Temperature Stats', {temp : hsystem.Temp})}>
           <Card middle style={{ marginLeft: 7 }}>
             <Icon temp/>
             <Text h2 style={{marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Outside Temp</Text>
-            <Text paragraph color="gray">In Farenheit  </Text>
+            <Text paragraph color="gray">In Celcius</Text>
           </Card>
           </TouchableOpacity>
           <TouchableOpacity
-          onPress={() => navigation.navigate('O2 Stats')}>
+          onPress={() => navigation.navigate('O2 Stats' , {light : hsystem.light})}>
           <Card middle style={{ marginLeft: 7 }}>
             <Icon o2 />
-            <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>o2</Text>
-            <Text paragraph color="gray">Dissolved Oxygen</Text>
+            <Text h2 style={{ marginTop: 17,fontSize: 18,fontWeight: 'bold',}}>Light Intensity</Text>
+            <Text paragraph color="gray">Lumens </Text>
           </Card>
           </TouchableOpacity>
     
