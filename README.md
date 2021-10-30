@@ -1,5 +1,3 @@
-#please change branch to latest version
-
 [![Firebase][Firebase]][firebase-url]
 
 
