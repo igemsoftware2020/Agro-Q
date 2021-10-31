@@ -219,6 +219,6 @@ varunsendil2003@gmail.com
 [app6]:https://2020.igem.org/wiki/images/2/22/T--Lambert_GA--ScanAPp.png
 [app7]: https://2020.igem.org/wiki/images/e/e0/T--Lambert_GA--Agro7.png
 [app8]:https://2020.igem.org/wiki/images/7/7e/T--Lambert_GA--Agro9.png
-=======
+
 To learn more about the app visit: https://2020.igem.org/Team:Lambert_GA/Software#agroQ
->>>>>>> master
+
